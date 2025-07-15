@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Latência Média (ms)",
+      "targets": [
+        {
+          "format": "time_series",
+          "rawSql": "SELECT created_at as time, avg_latency FROM ping_results WHERE $__timeFilter(created_at)",
+          "refId": "A"
+        }
+      ],
+      "datasource": "PostgreSQL"
+    },
+    {
+      "type": "graph",
+      "title": "Tempo de Carregamento HTTP (ms)",
+      "targets": [
+        {
+          "format": "time_series",
+          "rawSql": "SELECT created_at as time, duration_ms FROM http_results WHERE $__timeFilter(created_at)",
+          "refId": "B"
+        }
+      ],
+      "datasource": "PostgreSQL"
+    }
+  ],
+  "title": "Network Monitoring",
+  "schemaVersion": 26,
+  "version": 1,
+  "refresh": "10s"
+}
